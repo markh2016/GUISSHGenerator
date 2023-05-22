@@ -24,6 +24,36 @@ dialog.cpp:
     The function Dialog::writeCommands is called when the user clicks the "OK" button and writes the entered commands to the process for execution.
     The function Dialog::addKeyToAgent is called when the user clicks the "AddSSH" button and adds the SSH key to the agent.
 
+In more detail 
+
+Sure! Let's go through the code and explain each function:
+
+    Dialog::Dialog(QWidget *parent) - This is the constructor of the Dialog class, which is a subclass of QDialog. It initializes the dialog and sets up various connections between signals and slots. Here's what it does:
+        Initializes the dialog and sets up the user interface by calling ui->setupUi(this).
+        Creates a QProcess object named process and sets the isLoaded flag to false.
+        Sets the file_name variable to "/creedentials.ini" and the file_path variable to the current directory concatenated with the file_name.
+        Connects various buttons' click signals to their respective slots using the connect function.
+        Handles the dialog's close event by connecting the finished signal to the handleClose slot.
+        Sets up connections for the process object's signals, such as readyReadStandardOutput, readyReadStandardError, and finished.
+        Creates additional QProcess objects (addProcess, addProcess2, process2) and sets up connections for their signals as well.
+        Finally, this function is responsible for setting up the connections between signals and slots for various operations within the dialog.
+
+    Dialog::~Dialog() - This is the destructor of the Dialog class. It is responsible for cleaning up dynamically allocated memory and resources used by the dialog, such as deleting pointers and closing processes.
+
+    Dialog::showMessage(const QString &message, const QString &title, const int &msgtype) - This function displays a message box with a specified message, title, and message type. It creates a QMessageBox object, sets its properties based on the provided parameters, and executes it using the exec() function. After the message box is closed, it deletes the QMessageBox object to avoid memory leaks.
+
+    Dialog::saveSettings() - This function saves the email and password entered in the dialog to a settings file. It creates a QSettings object with the specified file path and format, and then sets the values for "email" and "pasv" using the setValue function. After saving the settings, it deletes the QSettings object.
+
+    Dialog::saveDetails() - This function is called when the "Save Details" button is clicked. It validates the email and password fields, and if they pass validation, it calls the saveSettings() function to save the details to the settings file. If any validation fails, an error message is displayed, and the corresponding fields are cleared.
+
+    Dialog::loadDetials() - This function is called when the "Load Details" button is clicked. It loads the email and password from the settings file, updates the corresponding fields in the dialog, and sets the isLoaded flag to true. If the settings file doesn't exist, an error message is displayed.
+
+    Dialog::handleClose() - This function is called when the dialog is closed. It is responsible for cleaning up resources and performing any necessary actions before the dialog is closed. In this case, it simply outputs a debug message.
+
+    Dialog::processStartProcess() - This function is called when the "Generate SSH" button is clicked. It starts a new process to generate an SSH key pair using the ssh-keygen command. The email entered in the dialog is used as the comment for the key pair. The process's output and errors are captured using the readyReadStandardOutput and readyReadStandardError signals, respectively. After the process finishes, the output is
+
+
+
 
 The project has been  compiled for Debain 12  and works extremley well  You may  need to recompile this  yourself  in which  case  after downloading 
 
