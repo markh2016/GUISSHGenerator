@@ -1,4 +1,4 @@
-# GUISSHGenerator
+# GUISSHGenerator Designed for debian linux only  MD Harrington London UK 20-05-2023 
 GUI Tool  that saves on having to type out tons of  using bash shell
 The code  consists of a header file dialog.h and its corresponding implementation file dialog.cpp. The code is a  Qt application and includes several Qt libraries for various functionalities. Let's go through the code and explain its purpose and structure.
 
@@ -23,3 +23,14 @@ dialog.cpp:
     The function Dialog::processStartProcess is called when the user clicks the "GenSSH" button and starts the process for generating an SSH key.
     The function Dialog::writeCommands is called when the user clicks the "OK" button and writes the entered commands to the process for execution.
     The function Dialog::addKeyToAgent is called when the user clicks the "AddSSH" button and adds the SSH key to the agent.
+
+
+The project has been  compiled for Debain 12  and works extremley well  You may  need to recompile this  yourself  in which  case  after downloading 
+
+open a  terminal and cd into  folder  build-SSHGEN-Desktop_Qt_6_3_0_GCC_64bit-Release
+issue  the commands make clean 
+then issue make 
+
+Fingers  crossed all should work  ( Im a new to qt  and still learning  this via on;line tuts, websites and  more or less self taught ) 
+
+
